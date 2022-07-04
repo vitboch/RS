@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Goldman&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Goldman', cursive;
+    letter-spacing: 1px;
+    color: #555;
+}
+
+body {
+    background: #f4f4f4;
+    max-width: 900px;
+    padding: 1em 2em 3em;
+    margin: auto;
+}
+
+h1, h2 {
+    text-align: center;
+    margin: 1em;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: 3em 0;
+    padding: 3em;
+    box-shadow: #444 0 9px 70px -35px;
+    background: #fff;
+}
+
+.person {
+    display: grid;
+    grid-template-columns: minmax(300px, 1fr) minmax(400px, 3fr);
+    gap: 2em;
+}
+
+.person>img {
+    border-radius: 0 5em;
+}
+
+.person-info>div>p:first-child {
+    color: #ccc;
+    margin-top: .5em;
+}
+
+.person-info>div>p:last-child {
+    line-height: 24px;
+}
+
+.goals>ul li {
+    list-style: decimal;
+    margin: 1em;
+    overflow-wrap: anywhere;
+}
+
+.goals>ul {
+    margin: 1em auto;
+}
+
+.time {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    margin: 1em auto;
+}
+
+.time>p {
+    padding: .5em 2em;
+    white-space: nowrap;
+}
+
+.time>p:nth-child(1),
+.time>p:nth-child(2),
+.time>p:nth-child(5),
+.time>p:nth-child(6),
+.time>p:nth-child(9),
+.time>p:nth-child(10),
+.time>p:nth-child(13),
+.time>p:nth-child(14) {
+    background: #f4f4f4;
+}
+
+.courses table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+.courses table th,
+.courses table td {
+    padding: 15px 10px;
+    text-align: end;
+}
+
+.courses table th {
+    border-bottom: 1px solid #000;
+}
+
+.contacts {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding-top: 2rem;
+}
+
+.contacts>a {
+    padding: 1.5rem;
+    text-decoration: none;
+    border-radius: 1em;
+    display: block;
+}
+
+.contacts>a:hover {
+    background: #f4f4f4;
+    box-shadow: #C8C8C8FF 0 0 3px 0;
+}
+
+.contacts>a>p {
+    margin-top: 1rem;
+    text-align: center;
+    display: block;
+}
+
+.contacts>a>img {
+    display: block;
+    margin: auto;
+    max-width: 80px;
+}
+
+a {
+    color: #555;
+    text-decoration: none;
+}
+
+a:hover {
+    opacity: .7;
+    cursor: pointer;
+    transform: rotate(-15deg);
+    color: dodgerblue;
+}
+
+@media (max-width: 855px) {
+    .person {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .container {
+        padding: 2em 1.5em;
+    }
+
+    .courses {
+        padding: 0;
+    }
+
+    .courses table thead,
+    .person>img {
+        display: none;
+    }
+
+    .courses table tr {
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    .courses table td {
+        display: block;
+        text-align: right;
+    }
+
+    .courses table td:last-child {
+        border-bottom: 0;
+    }
+
+    .courses table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+    }
+}
