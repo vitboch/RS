@@ -18,7 +18,7 @@ const getSumOfNumbers = (number, type = 'odd') => {
     return sum
 }
 
-console.log(getSumOfNumbers(10, 'odd')) // 25
-console.log(getSumOfNumbers(10, 'even')) // 30
-console.log(getSumOfNumbers(10, '')) // 55
-console.log(getSumOfNumbers(10, null)) // The type parameter can be one of 3 values: "odd", "even" and ""
+console.log(getSumOfNumbers(10, 'odd'))
+console.log(getSumOfNumbers(10, 'even'))
+console.log(getSumOfNumbers(10, ''))
+console.log(getSumOfNumbers(10, null))
