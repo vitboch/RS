@@ -5,7 +5,9 @@ class Dictionary {
     }
 
     add(word, description) {
-        this['words'][word] = {word: word, description}
+        !this['words'][word]
+            ? this['words'][word] = {word: word, description}
+            : false
     }
 
     remove(word) {
