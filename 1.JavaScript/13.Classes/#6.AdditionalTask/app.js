@@ -1,26 +1,45 @@
 class Dictionary {
+    #name
+    #words
+
     constructor(name) {
-        this.name = name
-        this.words = {}
+        this.#name = name
+        this.#words = {}
+    }
+
+    get mainName() {
+        return this.#name
+    }
+
+    set mainName(value) {
+        this.#name = value
+    }
+
+    get allWords() {
+        return this.#words
+    }
+
+    _addNewWord(wordKey = '', wordObj) {
+        this.allWords[wordKey] = wordObj
     }
 
     add(word, description) {
-        !this['words'][word]
-            ? this['words'][word] = {word: word, description}
+        !this.allWords[word]
+            ? this._addNewWord(word, {word: word, description: description})
             : false
     }
 
     remove(word) {
-        delete this['words'][word]
+            delete this.allWords[word]
     }
 
     get(word) {
-        console.log(this['words'][word] ? this['words'][word] : false)
+        return this.allWords[word]
     }
 
     showAllWords() {
-        Object.keys(this['words']).forEach(key => {
-            console.log(`${this['words'][key]['word']} - ${this['words'][key].description}`)
+        Object.keys(this.allWords).forEach(key => {
+            console.log(`${this.allWords[key]['word']} - ${this.allWords[key].description}`)
         })
     }
 }
@@ -31,7 +50,8 @@ class HardWordsDictionary extends Dictionary {
     }
 
     add(word, description) {
-        this['words'][word] = {word: word, description, isDifficult: true}
+        super.add(word, description)
+        this.allWords[word].isDifficult = true
     }
 }
 
@@ -50,3 +70,7 @@ hardWordsDictionary.add(
 )
 hardWordsDictionary.remove('neologism')
 hardWordsDictionary.showAllWords()
+console.log(hardWordsDictionary.mainName)
+hardWordsDictionary.mainName = 'New dictionary'
+console.log(hardWordsDictionary.mainName)
+console.log(hardWordsDictionary.allWords)
