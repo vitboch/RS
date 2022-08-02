@@ -1,6 +1,6 @@
 const body = document.body
 
-// 1 via innerHTML
+// 1 create with innerHTML
 body.innerHTML = `
 <form class="create-user-form">
   <label>
@@ -17,7 +17,7 @@ body.innerHTML = `
 </form>
 `
 
-// 2 via document.createElement()
+// 2 create with document.createElement()
 const newForm = document.createElement('form')
 newForm.className = 'create-user-form'
 body.append(newForm)
@@ -43,6 +43,25 @@ inputPassword.placeholder = 'Create a password'
 labelPassword.append(inputPassword)
 
 const btn = document.createElement('button')
-newForm.append(btn)
 btn.type = 'submit'
 btn.textContent = 'Confirm'
+newForm.append(btn)
+
+// create with function
+const createTag = (parent, mainName, type, name, placeholder, text, className) => {
+    mainName = document.createElement(`${mainName}`)
+    type !== '' ? mainName.type = type : null
+    name !== '' ? mainName.name = name : null
+    placeholder !== '' ? mainName.placeholder = placeholder : null
+    text !== '' ? mainName.textContent = text : null
+    className !== undefined ? mainName.className = className : null
+    parent.append(mainName)
+    return mainName
+}
+
+const form = createTag(body,'form', '', '', '', '',  'create-user-form')
+const nameLabel = createTag(form,'label', '', '', '', 'Name' )
+createTag(nameLabel, 'input', 'text', 'userName', 'Enter your name')
+const passwordLabel = createTag(form,'label', '', '', '', 'Password' )
+createTag(passwordLabel, 'input', 'password', 'password', 'Create a password')
+createTag(form, 'button', 'submit', '', '', 'Confirm')
